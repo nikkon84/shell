@@ -54,15 +54,24 @@ Singleton {
         }, null);
     }
 
-    Component.onCompleted: {
-        updateAll();
+    // Update when overview opens
+    Connections {
+        target: GlobalStates
+        function onOverviewOpenChanged() {
+            if (GlobalStates.overviewOpen) {
+                updateAll();
+            }
+        }
     }
 
+    // Only update on Hyprland events when overview is visible
     Connections {
         target: Hyprland
 
         function onRawEvent(event) {
-            updateAll()
+            if (GlobalStates.overviewOpen) {
+                updateAll();
+            }
         }
     }
 
