@@ -4,6 +4,7 @@ import qs.services
 import Caelestia
 import Quickshell
 import Quickshell.Io
+import "overview/services" as OverviewServices
 
 Scope {
     id: root
@@ -67,6 +68,12 @@ Scope {
         name: "launcherInterrupt"
         description: "Interrupt launcher keybind"
         onPressed: root.launcherInterrupted = true
+    }
+
+    CustomShortcut {
+        name: "overview"
+        description: "Toggle workspace overview"
+        onPressed: OverviewServices.GlobalStates.overviewOpen = !OverviewServices.GlobalStates.overviewOpen
     }
 
     IpcHandler {
