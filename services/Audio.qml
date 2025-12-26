@@ -109,7 +109,7 @@ Singleton {
     }
 
     PwObjectTracker {
-        objects: [...root.sinks, ...root.sources]
+        objects: [Pipewire.defaultAudioSink, Pipewire.defaultAudioSource, ...root.sinks, ...root.sources]
     }
 
     CavaProvider {
